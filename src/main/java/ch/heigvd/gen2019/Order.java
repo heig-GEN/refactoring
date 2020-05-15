@@ -33,16 +33,10 @@ public class Order implements ToJson {
     sb.append("\"id\": ");
     sb.append(getOrderId());
     sb.append(", ");
-    sb.append("\"products\": [");
-    for (int j = 0; j < getProductsCount(); j++) {
-      getProduct(j).encodeJson(sb);
-      sb.append(", ");
-    }
+    sb.append("\"products\": ");
 
-    if (getProductsCount() > 0) {
-      sb.delete(sb.length() - 2, sb.length());
-    }
+    ToJson.encodeCollection(sb, products);
 
-    sb.append("]}");
+    sb.append("}");
   }
 }
