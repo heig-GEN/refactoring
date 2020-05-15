@@ -19,7 +19,8 @@ public class OrdersWriter {
       sb.append(", ");
       sb.append("\"products\": [");
       for (int j = 0; j < order.getProductsCount(); j++) {
-        appendProductTo(sb, order.getProduct(j));
+        order.getProduct(j).encodeJson(sb);
+        sb.append(", ");
       }
 
       appendEndArray(sb, order.getProductsCount());
@@ -36,11 +37,6 @@ public class OrdersWriter {
     }
 
     sb.append("]}");
-  }
-
-  private void appendProductTo(StringBuffer sb, Product product) {
-    product.encodeJson(sb);
-    sb.append(", ");
   }
 
 }
