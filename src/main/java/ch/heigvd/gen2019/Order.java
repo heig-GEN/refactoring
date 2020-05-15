@@ -3,7 +3,7 @@ package ch.heigvd.gen2019;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class Order implements ToJson {
 
   private List<Product> products = new ArrayList<Product>();
   private int id;

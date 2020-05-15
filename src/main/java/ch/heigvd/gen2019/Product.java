@@ -1,6 +1,6 @@
 package ch.heigvd.gen2019;
 
-public class Product {
+public class Product implements ToJson {
 
   private String code;
   private Color color;
