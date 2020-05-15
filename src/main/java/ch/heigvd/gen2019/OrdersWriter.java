@@ -19,42 +19,45 @@ public class OrdersWriter {
       sb.append(", ");
       sb.append("\"products\": [");
       for (int j = 0; j < order.getProductsCount(); j++) {
-        Product product = order.getProduct(j);
-
-        sb.append("{");
-        sb.append("\"code\": \"");
-        sb.append(product.getCode());
-        sb.append("\", ");
-        sb.append("\"color\": \"");
-        sb.append(product.getColor());
-        sb.append("\", ");
-
-        if (product.getSize() != null) {
-          sb.append("\"size\": \"");
-          sb.append(product.getSize());
-          sb.append("\", ");
-        }
-
-        sb.append("\"price\": ");
-        sb.append(product.getPrice());
-        sb.append(", ");
-        sb.append("\"currency\": \"");
-        sb.append(product.getCurrency());
-        sb.append("\"}, ");
+        appendProductTo(sb, order.getProduct(j));
       }
 
-      if (order.getProductsCount() > 0) {
-        sb.delete(sb.length() - 2, sb.length());
-      }
-
-      sb.append("]");
-      sb.append("}, ");
+      appendEndArray(sb, order.getProductsCount());
+      sb.append(", ");
     }
 
-    if (orders.getOrdersCount() > 0) {
+    appendEndArray(sb, orders.getOrdersCount());
+    return sb.toString();
+  }
+
+  private void appendEndArray(StringBuffer sb, int nbElements) {
+    if (nbElements > 0) {
       sb.delete(sb.length() - 2, sb.length());
     }
 
-    return sb.append("]}").toString();
+    sb.append("]}");
+  }
+
+  private void appendProductTo(StringBuffer sb, Product product) {
+    sb.append("{");
+    sb.append("\"code\": \"");
+    sb.append(product.getCode());
+    sb.append("\", ");
+    sb.append("\"color\": \"");
+    sb.append(product.getColor());
+    sb.append("\", ");
+
+    if (product.getSize() != null) {
+      sb.append("\"size\": \"");
+      sb.append(product.getSize());
+      sb.append("\", ");
+    }
+
+    sb.append("\"price\": ");
+    sb.append(product.getPrice());
+    sb.append(", ");
+    sb.append("\"currency\": \"");
+    sb.append(product.getCurrency());
+    sb.append("\"}, ");
   }
 }
