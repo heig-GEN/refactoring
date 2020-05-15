@@ -35,4 +35,27 @@ public class Product {
   public String getCurrency() {
     return currency;
   }
+
+  public void encodeJson(StringBuffer sb) {
+    sb.append("{");
+    sb.append("\"code\": \"");
+    sb.append(getCode());
+    sb.append("\", ");
+    sb.append("\"color\": \"");
+    sb.append(getColor());
+    sb.append("\", ");
+
+    if (getSize() != null) {
+      sb.append("\"size\": \"");
+      sb.append(getSize());
+      sb.append("\", ");
+    }
+
+    sb.append("\"price\": ");
+    sb.append(getPrice());
+    sb.append(", ");
+    sb.append("\"currency\": \"");
+    sb.append(getCurrency());
+    sb.append("\"}");
+  }
 }
