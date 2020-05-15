@@ -39,6 +39,11 @@ public class OrdersWriter {
   }
 
   private void appendProductTo(StringBuffer sb, Product product) {
+    encodeJson(sb, product);
+    sb.append(", ");
+  }
+
+  private void encodeJson(StringBuffer sb, Product product) {
     sb.append("{");
     sb.append("\"code\": \"");
     sb.append(product.getCode());
@@ -59,6 +64,5 @@ public class OrdersWriter {
     sb.append("\"currency\": \"");
     sb.append(product.getCurrency());
     sb.append("\"}");
-    sb.append(", ");
   }
 }
