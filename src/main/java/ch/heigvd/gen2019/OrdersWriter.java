@@ -11,22 +11,8 @@ public class OrdersWriter {
   public String getContents() {
     StringBuffer sb = new StringBuffer("{\"orders\": [");
 
-    encodeOrders(sb, orders);
+    orders.encodeOrders(sb);
     return sb.toString();
-  }
-
-  private void encodeOrders(StringBuffer sb, Orders orders) {
-    for (int i = 0; i < orders.getOrdersCount(); i++) {
-      Order order = orders.getOrder(i);
-      order.encodeJson(sb);
-      sb.append(", ");
-    }
-
-    if (orders.getOrdersCount() > 0) {
-      sb.delete(sb.length() - 2, sb.length());
-    }
-
-    sb.append("]}");
   }
 
 }

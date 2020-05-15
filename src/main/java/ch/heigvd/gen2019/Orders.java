@@ -18,4 +18,18 @@ public class Orders {
   public Order getOrder(int i) {
     return orders.get(i);
   }
+
+  public void encodeOrders(StringBuffer sb) {
+    for (int i = 0; i < getOrdersCount(); i++) {
+      Order order = getOrder(i);
+      order.encodeJson(sb);
+      sb.append(", ");
+    }
+
+    if (getOrdersCount() > 0) {
+      sb.delete(sb.length() - 2, sb.length());
+    }
+
+    sb.append("]}");
+  }
 }
