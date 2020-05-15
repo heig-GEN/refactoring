@@ -27,4 +27,22 @@ public class Order {
   public void AddProduct(Product product) {
     products.add(product);
   }
+
+  public void encodeOrder(StringBuffer sb) {
+    sb.append("{");
+    sb.append("\"id\": ");
+    sb.append(getOrderId());
+    sb.append(", ");
+    sb.append("\"products\": [");
+    for (int j = 0; j < getProductsCount(); j++) {
+      getProduct(j).encodeJson(sb);
+      sb.append(", ");
+    }
+
+    if (getProductsCount() > 0) {
+      sb.delete(sb.length() - 2, sb.length());
+    }
+
+    sb.append("]}");
+  }
 }
