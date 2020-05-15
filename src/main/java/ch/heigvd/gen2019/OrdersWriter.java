@@ -30,8 +30,8 @@ public class OrdersWriter {
     return sb.toString();
   }
 
-  private void appendEndArray(StringBuffer sb, int tmp) {
-    if (tmp > 0) {
+  private void appendEndArray(StringBuffer sb, int nbElements) {
+    if (nbElements > 0) {
       sb.delete(sb.length() - 2, sb.length());
     }
 
