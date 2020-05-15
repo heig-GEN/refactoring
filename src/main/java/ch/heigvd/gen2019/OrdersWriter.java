@@ -31,7 +31,7 @@ public class OrdersWriter {
 
         if (product.getSize() != null) {
           sb.append("\"size\": \"");
-          sb.append(getSizeFor(product));
+          sb.append(product.getSize());
           sb.append("\", ");
         }
 
@@ -56,10 +56,6 @@ public class OrdersWriter {
     }
 
     return sb.append("]}").toString();
-  }
-
-  private String getSizeFor(Product product) {
-    return product.getSize().toString();
   }
 
   private String getColorFor(Product product) {
