@@ -23,21 +23,21 @@ public class OrdersWriter {
       }
 
       int tmp = order.getProductsCount();
-      if (tmp > 0) {
-        sb.delete(sb.length() - 2, sb.length());
-      }
-
-      sb.append("]}");
+      appendEndArray(sb, tmp);
       sb.append(", ");
     }
 
     int tmp = orders.getOrdersCount();
+    appendEndArray(sb, tmp);
+    return sb.toString();
+  }
+
+  private void appendEndArray(StringBuffer sb, int tmp) {
     if (tmp > 0) {
       sb.delete(sb.length() - 2, sb.length());
     }
 
     sb.append("]}");
-    return sb.toString();
   }
 
   private void appendProductTo(StringBuffer sb, Product product) {
