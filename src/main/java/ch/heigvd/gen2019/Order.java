@@ -28,7 +28,7 @@ public class Order {
     products.add(product);
   }
 
-  public void encodeOrder(StringBuffer sb) {
+  public void encodeJson(StringBuffer sb) {
     sb.append("{");
     sb.append("\"id\": ");
     sb.append(getOrderId());

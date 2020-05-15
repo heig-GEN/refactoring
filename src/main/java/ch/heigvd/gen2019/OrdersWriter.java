@@ -13,7 +13,7 @@ public class OrdersWriter {
 
     for (int i = 0; i < orders.getOrdersCount(); i++) {
       Order order = orders.getOrder(i);
-      order.encodeOrder(sb);
+      order.encodeJson(sb);
       sb.append(", ");
     }
 
