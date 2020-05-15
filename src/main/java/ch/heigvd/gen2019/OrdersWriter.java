@@ -22,13 +22,11 @@ public class OrdersWriter {
         appendProductTo(sb, order.getProduct(j));
       }
 
-      int tmp = order.getProductsCount();
-      appendEndArray(sb, tmp);
+      appendEndArray(sb, order.getProductsCount());
       sb.append(", ");
     }
 
-    int tmp = orders.getOrdersCount();
-    appendEndArray(sb, tmp);
+    appendEndArray(sb, orders.getOrdersCount());
     return sb.toString();
   }
 
