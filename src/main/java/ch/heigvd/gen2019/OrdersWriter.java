@@ -58,6 +58,7 @@ public class OrdersWriter {
     sb.append(", ");
     sb.append("\"currency\": \"");
     sb.append(product.getCurrency());
-    sb.append("\"}, ");
+    sb.append("\"}");
+    sb.append(", ");
   }
 }
