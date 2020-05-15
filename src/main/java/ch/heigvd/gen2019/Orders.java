@@ -1,6 +1,7 @@
 package ch.heigvd.gen2019;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Orders implements ToJson {
@@ -20,15 +21,16 @@ public class Orders implements ToJson {
   }
 
   public void encodeJson(StringBuffer sb) {
-    sb.append("{\"orders\": [");
-    for (int i = 0; i < getOrdersCount(); i++) {
-      Order order = getOrder(i);
-      order.encodeJson(sb);
-      sb.append(", ");
-    }
+    sb.append("{\"orders\": ");
 
-    if (getOrdersCount() > 0) {
-      sb.delete(sb.length() - 2, sb.length());
+
+    Iterator<Order> iterator = orders.iterator();
+    sb.append("[");
+    while (iterator.hasNext()) {
+      iterator.next().encodeJson(sb);
+      if (iterator.hasNext()) {
+        sb.append(", ");
+      }
     }
 
     sb.append("]}");
