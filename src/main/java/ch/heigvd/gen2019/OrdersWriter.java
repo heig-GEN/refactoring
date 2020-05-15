@@ -9,8 +9,7 @@ public class OrdersWriter {
   }
 
   public String getContents() {
-    StringBuffer sb = new StringBuffer("{\"orders\": [");
-
+    StringBuffer sb = new StringBuffer();
     orders.encodeJson(sb);
     return sb.toString();
   }

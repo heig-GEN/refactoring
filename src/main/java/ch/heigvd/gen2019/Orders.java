@@ -20,6 +20,7 @@ public class Orders implements ToJson {
   }
 
   public void encodeJson(StringBuffer sb) {
+    sb.append("{\"orders\": [");
     for (int i = 0; i < getOrdersCount(); i++) {
       Order order = getOrder(i);
       order.encodeJson(sb);
