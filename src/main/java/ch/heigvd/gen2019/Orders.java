@@ -32,7 +32,8 @@ public class Orders implements ToJson {
         sb.append(", ");
       }
     }
+    sb.append("]");
 
-    sb.append("]}");
+    sb.append("}");
   }
 }

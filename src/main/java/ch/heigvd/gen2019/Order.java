@@ -44,7 +44,8 @@ public class Order implements ToJson {
         sb.append(", ");
       }
     }
+    sb.append("]");
 
-    sb.append("]}");
+    sb.append("}");
   }
 }
