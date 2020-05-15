@@ -23,16 +23,7 @@ public class Orders implements ToJson {
   public void encodeJson(StringBuffer sb) {
     sb.append("{\"orders\": ");
 
-
-    Iterator<Order> iterator = orders.iterator();
-    sb.append("[");
-    while (iterator.hasNext()) {
-      iterator.next().encodeJson(sb);
-      if (iterator.hasNext()) {
-        sb.append(", ");
-      }
-    }
-    sb.append("]");
+    ToJson.encodeCollection(sb, orders);
 
     sb.append("}");
   }
