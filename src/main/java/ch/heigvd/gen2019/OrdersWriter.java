@@ -17,7 +17,11 @@ public class OrdersWriter {
       sb.append(", ");
     }
 
-    appendEndArray(sb, orders.getOrdersCount());
+    if (orders.getOrdersCount() > 0) {
+      sb.delete(sb.length() - 2, sb.length());
+    }
+
+    sb.append("]}");
     return sb.toString();
   }
 
@@ -32,11 +36,7 @@ public class OrdersWriter {
       sb.append(", ");
     }
 
-    appendEndArray(sb, order.getProductsCount());
-  }
-
-  private void appendEndArray(StringBuffer sb, int nbElements) {
-    if (nbElements > 0) {
+    if (order.getProductsCount() > 0) {
       sb.delete(sb.length() - 2, sb.length());
     }
 
