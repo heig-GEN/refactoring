@@ -22,19 +22,22 @@ public class OrdersWriter {
         appendProductTo(sb, order.getProduct(j));
       }
 
-      if (order.getProductsCount() > 0) {
+      int tmp = order.getProductsCount();
+      if (tmp > 0) {
         sb.delete(sb.length() - 2, sb.length());
       }
 
-      sb.append("]");
-      sb.append("}, ");
+      sb.append("]}");
+      sb.append(", ");
     }
 
-    if (orders.getOrdersCount() > 0) {
+    int tmp = orders.getOrdersCount();
+    if (tmp > 0) {
       sb.delete(sb.length() - 2, sb.length());
     }
 
-    return sb.append("]}").toString();
+    sb.append("]}");
+    return sb.toString();
   }
 
   private void appendProductTo(StringBuffer sb, Product product) {
