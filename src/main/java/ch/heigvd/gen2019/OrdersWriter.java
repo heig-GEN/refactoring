@@ -13,22 +13,26 @@ public class OrdersWriter {
 
     for (int i = 0; i < orders.getOrdersCount(); i++) {
       Order order = orders.getOrder(i);
-      sb.append("{");
-      sb.append("\"id\": ");
-      sb.append(order.getOrderId());
-      sb.append(", ");
-      sb.append("\"products\": [");
-      for (int j = 0; j < order.getProductsCount(); j++) {
-        order.getProduct(j).encodeJson(sb);
-        sb.append(", ");
-      }
-
-      appendEndArray(sb, order.getProductsCount());
+      encodeOrder(sb, order);
       sb.append(", ");
     }
 
     appendEndArray(sb, orders.getOrdersCount());
     return sb.toString();
+  }
+
+  private void encodeOrder(StringBuffer sb, Order order) {
+    sb.append("{");
+    sb.append("\"id\": ");
+    sb.append(order.getOrderId());
+    sb.append(", ");
+    sb.append("\"products\": [");
+    for (int j = 0; j < order.getProductsCount(); j++) {
+      order.getProduct(j).encodeJson(sb);
+      sb.append(", ");
+    }
+
+    appendEndArray(sb, order.getProductsCount());
   }
 
   private void appendEndArray(StringBuffer sb, int nbElements) {
