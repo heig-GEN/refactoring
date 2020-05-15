@@ -11,7 +11,7 @@ public class OrdersWriter {
   public String getContents() {
     StringBuffer sb = new StringBuffer("{\"orders\": [");
 
-    orders.encodeOrders(sb);
+    orders.encodeJson(sb);
     return sb.toString();
   }
 

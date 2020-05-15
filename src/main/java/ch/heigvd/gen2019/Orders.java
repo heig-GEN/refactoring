@@ -3,7 +3,7 @@ package ch.heigvd.gen2019;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Orders {
+public class Orders implements ToJson {
 
   private List<Order> orders = new ArrayList<Order>();
 
@@ -19,7 +19,7 @@ public class Orders {
     return orders.get(i);
   }
 
-  public void encodeOrders(StringBuffer sb) {
+  public void encodeJson(StringBuffer sb) {
     for (int i = 0; i < getOrdersCount(); i++) {
       Order order = getOrder(i);
       order.encodeJson(sb);
