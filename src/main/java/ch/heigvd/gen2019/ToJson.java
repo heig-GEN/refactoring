@@ -28,7 +28,7 @@ public interface ToJson {
     sb.append("\", ");
   }
 
-  static void appendFieldTo(StringBuffer sb, String fieldName, double fieldValue) {
+  static <N extends Number> void appendFieldTo(StringBuffer sb, String fieldName, N fieldValue) {
     sb.append("\"");
     sb.append(fieldName);
     sb.append("\": ");

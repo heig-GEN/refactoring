@@ -30,9 +30,7 @@ public class Order implements ToJson {
 
   public void encodeJson(StringBuffer sb) {
     sb.append("{");
-    sb.append("\"id\": ");
-    sb.append(getOrderId());
-    sb.append(", ");
+    ToJson.appendFieldTo(sb, "id", getOrderId());
     sb.append("\"products\": ");
 
     ToJson.encodeCollection(sb, products);
