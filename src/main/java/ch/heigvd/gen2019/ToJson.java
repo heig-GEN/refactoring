@@ -17,4 +17,23 @@ public interface ToJson {
     }
     sb.append("]");
   }
+
+  static void appendFieldTo(StringBuffer sb, String fieldName, String fieldValue) {
+    sb.append("\"");
+    sb.append(fieldName);
+    sb.append("\": ");
+
+    sb.append("\"");
+    sb.append(fieldValue);
+    sb.append("\", ");
+  }
+
+  static <N extends Number> void appendFieldTo(StringBuffer sb, String fieldName, N fieldValue) {
+    sb.append("\"");
+    sb.append(fieldName);
+    sb.append("\": ");
+
+    sb.append(fieldValue);
+    sb.append(", ");
+  }
 }

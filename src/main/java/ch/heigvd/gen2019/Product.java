@@ -38,24 +38,16 @@ public class Product implements ToJson {
 
   public void encodeJson(StringBuffer sb) {
     sb.append("{");
-    sb.append("\"code\": \"");
-    sb.append(getCode());
-    sb.append("\", ");
-    sb.append("\"color\": \"");
-    sb.append(getColor());
-    sb.append("\", ");
+    ToJson.appendFieldTo(sb, "code", getCode());
+    ToJson.appendFieldTo(sb, "color", getColor().toString());
 
     if (getSize() != null) {
-      sb.append("\"size\": \"");
-      sb.append(getSize());
-      sb.append("\", ");
+      ToJson.appendFieldTo(sb, "size", getSize().toString());
     }
 
-    sb.append("\"price\": ");
-    sb.append(getPrice());
-    sb.append(", ");
-    sb.append("\"currency\": \"");
-    sb.append(getCurrency());
-    sb.append("\"}");
+    ToJson.appendFieldTo(sb, "price", getPrice());
+    ToJson.appendFieldTo(sb, "currency", getCurrency());
+    sb.delete(sb.length() - 2, sb.length());
+    sb.append("}");
   }
 }
