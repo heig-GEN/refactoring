@@ -45,9 +45,7 @@ public class Product implements ToJson {
       ToJson.appendFieldTo(sb, "size", getSize().toString());
     }
 
-    sb.append("\"price\": ");
-    sb.append(getPrice());
-    sb.append(", ");
+    ToJson.appendFieldTo(sb, "price", getPrice());
     ToJson.appendFieldTo(sb, "currency", getCurrency());
     sb.delete(sb.length() - 2, sb.length());
     sb.append("}");
